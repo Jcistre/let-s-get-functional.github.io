@@ -24,19 +24,74 @@ var maleCount = function(array) {
     return males.length
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    const females = _.filter(array, (customer) => customer.gender === 'female');
+    return females.length
+};
 
-var oldestCustomer;
+var oldestCustomer = function(array) {
+    let currentAge = 0;
+    let currentOldest = "";
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].age > currentAge) {
+            currentAge = array[i].age
+            currentOldest = array[i].name
+        }
+    }
+    return currentOldest;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    let currentAge = 1000;
+    let currentYoungest = "";
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].age < currentAge) {
+            currentAge = array[i].age
+            currentYoungest = array[i].name
+        }
+    }
+    return currentYoungest;
+};
 
 var averageBalance;
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+    const match = _.filter(array, function(customer) {
+        if (customer.name[0].toLowerCase() === letter.toLowerCase()) {
+            return customer.name
+        }
+    })
+    return match.length
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    let match1 = _.filter(array, function(name) {
+        if (customer === name.name) {
+            return name;
+        }
+    });
+    let match2 = _.filter(match1[0].friends, function(friend) {
+        let output = []
+        if (friend.name[0].toLowerCase() === letter.toLowerCase()) {
+            output.push(friend.name)
+        }
+        return output.length;
+    });
+    return match2.length;
+};
 
-var friendsCount;
+// var friendsCount = function(array, name) {
+//     let match = _.filter(array, function(person) {
+//         let output = [];
+//         for (let i = 0; i < person.friends.length; i++) {
+//             if (person.friends[i].name === name) {
+//                 output.push(person.name)
+//             }
+//         }
+//         return output
+//     })
+//     return match;
+// };
 
 var topThreeTags;
 
