@@ -45,37 +45,37 @@ const _ = require('lodown-oliviasaborush');
  - **Objective**: Find the oldest customer's name
  - **Input**: `Array`
  - **Output**: `String`
- - **Constraints**:
+ - **Constraints**: "reduce"
 
 ### 4: `youngestCustomer`
  - **Objective**: Find the youngest customer's name
  - **Input**: `Array`
  - **Output**: `String`
- - **Constraints**:
+ - **Constraints**: "reduce"
 
 ### 5: `averageBalance`
  - **Objective**: Find the average balance of all customers
  - **Input**: `Array`
  - **Output**: `Number`
- - **Constraints**:
+ - **Constraints**: "reduce"
 
 ### 6: `firstLetterCount`
  - **Objective**: Find how many customer's names begin with a given letter
  - **Input**: `Array`, `Letter`
  - **Output**: `Number`
- - **Constraints**:
+ - **Constraints**: "filter"
 
 ### 7: `friendFirstLetterCount`
  - **Objective**: Find how many friends of a given customer have names that start with a given letter
  - **Input**: `Array`, `Customer`, `Letter`
  - **Output**: `Number`
- - **Constraints**:
+ - **Constraints**: "filter"
 
 ### 8: `friendsCount`
  - **Objective**: Find the customers' names that have a given customer's name in their friends list
  - **Input**: `Array`, `Name`
  - **Output**: `Array`
- - **Constraints**:
+ - **Constraints**: "filter"
 
 ### 9: `topThreeTags`
  - **Objective**: Find the three most common tags among all customers' associated tags

@@ -20,7 +20,8 @@
  */
 
 var maleCount = function(array) {
-  
+    const males = _.filter(array, (customer) => customer.gender === 'male');
+    return males.length
 };
 
 var femaleCount;
