@@ -30,15 +30,13 @@ var femaleCount = function(array) {
 };
 
 var oldestCustomer = function(array) {
-    let currentAge = 0;
-    let currentOldest = "";
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].age > currentAge) {
-            currentAge = array[i].age
-            currentOldest = array[i].name
+    return _.reduce(array, function(accumulator, current) {
+        if (accumulator.age > current.age) {
+            return accumulator.name;
+        } else {
+            return current.name;
         }
-    }
-    return currentOldest;
+    });
 };
 
 var youngestCustomer = function(array) {
@@ -95,7 +93,14 @@ var friendFirstLetterCount = function(array, customer, letter) {
 
 var topThreeTags;
 
-var genderCount;
+// var genderCount = function(array) {
+//     return _.reduce(array, function(accumulator, current) {
+//         // determine if current object's gender already exists in accumulator as a key
+//         // if it does, increment it
+//         // else it doesn't exist
+//         // create this key and give it an initial value
+//     }, {})
+// };
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
