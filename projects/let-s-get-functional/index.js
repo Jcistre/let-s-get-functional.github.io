@@ -25,33 +25,52 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array) {
-    const females = _.filter(array, (customer) => customer.gender === 'female');
-    return females.length
+    return _.reduce(array, function(accumulator, item) {
+        if (item.gender === 'female') {
+            accumulator += 1
+        }
+        return accumulator;
+    }, 0);
 };
 
 var oldestCustomer = function(array) {
-    return _.reduce(array, function(accumulator, current) {
-        if (accumulator.age > current.age) {
-            return accumulator.name;
+    let oldest = _.reduce(array, function(accumulator, current) {
+        if (current.age > accumulator.age) {
+            return current
         } else {
-            return current.name;
+            return accumulator
         }
     });
+    return oldest.name
 };
 
 var youngestCustomer = function(array) {
-    let currentAge = 1000;
-    let currentYoungest = "";
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].age < currentAge) {
-            currentAge = array[i].age
-            currentYoungest = array[i].name
+    let youngest = _.reduce(array, function(accumulator, current) {
+        if (current.age < accumulator.age) {
+            return current
+        } else {
+            return accumulator
         }
-    }
-    return currentYoungest;
+    });
+    return youngest.name
 };
 
-var averageBalance;
+var averageBalance = function(array) {
+    let total = _.reduce(array, function(accumulator, current) {
+        // add current's balance value to accumulator
+        let num = parseFloat(current.balance.replace(/\$/, ""))
+        // add num to accumulator
+        accumulator += parseFloat(num)
+        // return accumulator
+        console.log(accumulator)
+        return accumulator
+    }, 0)
+    // get average for dividing total from array's length
+    let average = total/array.length
+    // return average
+    console.log(average)
+    return average;
+};
 
 var firstLetterCount = function(array, letter) {
     const match = _.filter(array, function(customer) {
