@@ -57,18 +57,11 @@ var youngestCustomer = function(array) {
 
 var averageBalance = function(array) {
     let total = _.reduce(array, function(accumulator, current) {
-        // add current's balance value to accumulator
-        let num = parseFloat(current.balance.replace(/\$/, ""))
-        // add num to accumulator
-        accumulator += parseFloat(num)
-        // return accumulator
-        console.log(accumulator)
+        let num = parseFloat(current.balance.replace("$", "").replace(",", ""))
+        accumulator += num
         return accumulator
     }, 0)
-    // get average for dividing total from array's length
     let average = total/array.length
-    // return average
-    console.log(average)
     return average;
 };
 
@@ -97,18 +90,17 @@ var friendFirstLetterCount = function(array, customer, letter) {
     return match2.length;
 };
 
-// var friendsCount = function(array, name) {
-//     let match = _.filter(array, function(person) {
-//         let output = [];
-//         for (let i = 0; i < person.friends.length; i++) {
-//             if (person.friends[i].name === name) {
-//                 output.push(person.name)
-//             }
-//         }
-//         return output
-//     })
-//     return match;
-// };
+var friendsCount = function(array, name) {
+    let match = _.filter(array, function(person) {
+        for (let i = 0; i < person.friends.length; i++) {
+            if (person.friends[i].name === name) {
+                return person.name
+            }
+        }
+    })
+    console.log(match)
+    return match;
+};
 
 var topThreeTags;
 
