@@ -92,26 +92,35 @@ var friendFirstLetterCount = function(array, customer, letter) {
 
 var friendsCount = function(array, name) {
     let match = _.filter(array, function(person) {
+        // for loop to iterate over person's friends' array
         for (let i = 0; i < person.friends.length; i++) {
+            // if name in friends matches name given, return that
             if (person.friends[i].name === name) {
                 return person.name
             }
         }
     })
     console.log(match)
+    // return match
     return match;
 };
 
 var topThreeTags;
 
-// var genderCount = function(array) {
-//     return _.reduce(array, function(accumulator, current) {
-//         // determine if current object's gender already exists in accumulator as a key
-//         // if it does, increment it
-//         // else it doesn't exist
-//         // create this key and give it an initial value
-//     }, {})
-// };
+var genderCount = function(array) {
+    return _.reduce(array, function(accumulator, current) {
+        // determine if current object's gender already exists in accumulator as a key  
+        if (accumulator[`${current.gender}`] === current.gender) {
+                accumulator[`${current.gender}`] += 1
+            } else {
+                accumulator[current.gender] = 1
+            }
+            return accumulator
+        // if it does, increment it
+        // else it doesn't exist
+        // create this key and give it an initial value
+    }, {})
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
