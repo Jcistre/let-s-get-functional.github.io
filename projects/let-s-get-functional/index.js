@@ -107,16 +107,33 @@ var friendsCount = function(array, name) {
     return names;
 };
 
-var topThreeTags;
+var topThreeTags = function(array) {
+    let counts = _.reduce(array, function(accumultator, current) {
+        for (let i = 0; i < current.tags.length; i++) {
+            accumultator[current.tags[i]] = (accumultator[current.tags[i]] || 0) + 1;
+        }
+        return accumultator
+    }, {})
+    let output = []
+    let highest = _.reduce(counts, function(accumulator, current) {
+        if (current > accumulator) {
+            return current
+        } else {
+            return accumulator
+        }
+    });
+    for (let key in counts) {
+        if (counts[key] === highest) {
+            output.push(key)
+        }
+    }
+    return output;
+};
 
 var genderCount = function(array) {
-    return _.reduce(array, function(accumulator, current) {
-        // determine if current object's gender already exists in accumulator as a key  
-            accumulator[current.gender] = (accumulator[current.gender] || 0) + 1
-            return accumulator
-        // if it does, increment it
-        // else it doesn't exist
-        // create this key and give it an initial value
+    return _.reduce(array, function(accumulator, current) { 
+        accumulator[current.gender] = (accumulator[current.gender] || 0) + 1;
+        return accumulator;
     }, {})
 };
 
