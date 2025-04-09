@@ -91,7 +91,7 @@ var friendFirstLetterCount = function(array, customer, letter) {
 };
 
 var friendsCount = function(array, name) {
-    let match = _.filter(array, function(person) {
+    let matches = _.filter(array, function(person) {
         // for loop to iterate over person's friends' array
         for (let i = 0; i < person.friends.length; i++) {
             // if name in friends matches name given, return that
@@ -100,9 +100,11 @@ var friendsCount = function(array, name) {
             }
         }
     })
-    console.log(match)
+    let names = _.map(matches, function(person) {
+        return person.name
+    })
     // return match
-    return match;
+    return names;
 };
 
 var topThreeTags;
@@ -110,11 +112,7 @@ var topThreeTags;
 var genderCount = function(array) {
     return _.reduce(array, function(accumulator, current) {
         // determine if current object's gender already exists in accumulator as a key  
-        if (accumulator[`${current.gender}`] === current.gender) {
-                accumulator[`${current.gender}`] += 1
-            } else {
-                accumulator[current.gender] = 1
-            }
+            accumulator[current.gender] = (accumulator[current.gender] || 0) + 1
             return accumulator
         // if it does, increment it
         // else it doesn't exist
