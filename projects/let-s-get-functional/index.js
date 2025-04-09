@@ -108,13 +108,14 @@ var friendsCount = function(array, name) {
 };
 
 var topThreeTags = function(array) {
+    // create an object with the tags and amount of times tag was mentioned / similar code to genderCount
     let counts = _.reduce(array, function(accumultator, current) {
         for (let i = 0; i < current.tags.length; i++) {
             accumultator[current.tags[i]] = (accumultator[current.tags[i]] || 0) + 1;
         }
         return accumultator
     }, {})
-    let output = []
+    // find the highest count / same code as oldestCustomer
     let highest = _.reduce(counts, function(accumulator, current) {
         if (current > accumulator) {
             return current
@@ -122,11 +123,14 @@ var topThreeTags = function(array) {
             return accumulator
         }
     });
+    // loop over counts object and if key's value matches highest value, push the key into output array 
+    let output = []
     for (let key in counts) {
         if (counts[key] === highest) {
             output.push(key)
         }
     }
+    // return array
     return output;
 };
 
